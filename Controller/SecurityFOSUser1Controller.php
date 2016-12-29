@@ -14,6 +14,7 @@ namespace Sonata\UserBundle\Controller;
 use FOS\UserBundle\Controller\SecurityController;
 use Sonata\UserBundle\Model\UserInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class SecurityFOSUser1Controller.
@@ -26,7 +27,7 @@ class SecurityFOSUser1Controller extends SecurityController
     /**
      * {@inheritdoc}
      */
-    public function loginAction()
+    public function loginAction(Request $request)
     {
         $token = $this->container->get('security.context')->getToken();
 
@@ -37,6 +38,6 @@ class SecurityFOSUser1Controller extends SecurityController
             return new RedirectResponse($url);
         }
 
-        return parent::loginAction();
+        return parent::loginAction($request);
     }
 }
